@@ -29,7 +29,7 @@ public class DbUpdater {
         List<Item> items = new ArrayList<>();
 
         stores.stream()
-                .flatMap(store -> crawlerClient.getMany(store, Pageable.unpaged())
+                .flatMap(store -> crawlerClient.getMany(store, Pageable.ofSize(Integer.MAX_VALUE))
                         .getContent()
                         .stream())
                 .forEach(productDto -> addItem(items, productDto));
