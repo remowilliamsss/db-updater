@@ -1,6 +1,7 @@
 package ru.egorov.dbupdater.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import ru.egorov.dbupdater.client.StoreCrawlerClient;
@@ -28,8 +29,8 @@ public class DbUpdater {
         List<Item> items = new ArrayList<>();
 
         stores.stream()
-                .flatMap(store -> crawlerClient.getMany(store, null, null)
-                        .getProducts()
+                .flatMap(store -> crawlerClient.getMany(store, Pageable.unpaged())
+                        .getContent()
                         .stream())
                 .forEach(productDto -> addItem(items, productDto));
 
