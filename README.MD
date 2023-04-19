@@ -6,7 +6,7 @@
 
 В проекте использовались:
 
-Spring Boot
-Spring Cloud
-Spring Data
-PostgreSQL
+1. Spring Boot
+2. Spring Cloud
+3. Spring Data
+4. PostgreSQL
